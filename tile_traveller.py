@@ -1,5 +1,9 @@
 
     #assign startpostion
+    def assign_start():
+        start_pos = 1
+        return start_pos
+
     #print possible moves
     #Get user choise to move
     #while not end_point
