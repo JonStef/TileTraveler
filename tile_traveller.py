@@ -8,5 +8,5 @@
         #if not - check if move possible
         #if possible - move
         #if not - print (Not a valid direction!)
-    #print victory
+    #print victory!
 
