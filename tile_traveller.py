@@ -99,6 +99,12 @@ while not victory:
     if victory:
         print("Victory! Total coins", coin, end="")
         print(".")
+        answer_again = input("Play again (y/n): ")
+        if answer_again == "y" or answer_again == "Y":
+            victory = False
+            row = 1
+            col = 1
+            coin = 0
     else:
         valid_directions, coin = find_directions(col, row, coin)
         print_directions(valid_directions)
