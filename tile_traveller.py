@@ -39,10 +39,12 @@ def print_directions(directions_str):
     print(".")
 
 def lever_check(coin):
-    question = input("Pull a lever (y/n): ").lower()
-    if question == 'y':
+    question = input("Pull a lever (y/n): ")
+
+    if question == 'y' or question == 'Y':
         coin = coin + 1
-        print("You recieved 1 coin and your total is now", coin)
+        print("You received 1 coin, your total is now", coin, end="")
+        print(".")
     return coin
 
 def find_directions(col, row, coin):
@@ -58,10 +60,13 @@ def find_directions(col, row, coin):
         valid_directions = NORTH
     elif col == 2 and row == 2: # (2,2)
         valid_directions = SOUTH+WEST
+        coin = lever_check(coin)
     elif col == 2 and row == 3: # (2,3)
         valid_directions = EAST+WEST
+        coin = lever_check(coin)
     elif col == 3 and row == 2: # (3,2)
         valid_directions = NORTH+SOUTH
+        coin = lever_check(coin)
     elif col == 3 and row == 3: # (3,3)
         valid_directions = SOUTH+WEST
     return valid_directions, coin
@@ -92,7 +97,8 @@ print_directions(valid_directions)
 while not victory:
     victory, col, row = play_one_move(col, row, valid_directions)
     if victory:
-        print("Victory!")
+        print("Victory! Total coins", coin, end="")
+        print(".")
     else:
         valid_directions, coin = find_directions(col, row, coin)
         print_directions(valid_directions)
